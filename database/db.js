@@ -59,7 +59,7 @@ exports.insertLike = function(like,callback,errcallback){
 }
 // insert a userId/fbId matching into idpairs collection
 exports.insertIdPair = function(fbId, userId,callback,errcallback){
-	idPairs.insert({FbId:fbId,UserId:userId},function(err){
+	idPairs.insert({FbId:fbId,UserId:userId},function(err,result){
 		if(err) errcallback(err);
 		else callback();
 	});

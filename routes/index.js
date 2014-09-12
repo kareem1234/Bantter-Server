@@ -7,7 +7,7 @@ var awsKey = credentials.accessKeyId;
 var secret = credentials.secretAccessKey;
 
 function errCallback(res){
-	console.log("error found");
+	//console.log("error found");
 	var func = function(err){
 		if(err)
 			console.log(err);
@@ -19,12 +19,10 @@ function errCallback(res){
 exports.insertUser = function(req,res){
 	var user = req.body;
 	convertPropsToNum(user);
-	var callback = function(){
-			res.end();
-	};
-	db.insertIdPair(user,function(){
-		db.insertUser(user,callback,errCallback(res));
-	},errCallback(res));
+	var err = errCallback(res);
+	var callback2 = function(){res.end();};
+	var callback1 = function(){db.insertUser(user,callback2,err);};
+	db.insertIdPair(user.FbId,user.Id,callback1,err);
 }
 exports.insertLike = function(req,res){
 	convertPropsToNum(req.body);
