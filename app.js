@@ -6,13 +6,13 @@
 */
 
  var cluster = require('cluster');
- var numCPUs = require('os').cpus().length-2;
+ var numCPUs = require('os').cpus().length-1;
  if (cluster.isMaster) {
   // Fork workers.
   for (var i = 0; i < numCPUs; i++) {
     cluster.fork();
   }
-}
+}else{
 
 
 
@@ -71,6 +71,7 @@ function startServer(){
 db.connect(function(){
   awsRoutes.initTranscode(startServer);
 });
+}
 
 
 
