@@ -111,7 +111,7 @@ exports.findVidRefs = function(fbId,callback,errcallback){
 exports.findInboxRefs = function(FbId,callback,errcallback){
 	vidRefs.find({To: FbId}).toArray(function(err,docs){
 		if(err) errcallback(err);
-		else{console.dir(docs); callback(docs);}
+		else callback(docs);
 	});
 }
 // return users who were liked by the specified fbid
@@ -136,20 +136,16 @@ exports.findWhoILike = function(query,FbId,callback,errcallback){
 }
 // return the users who sent messages to the specified fbid
 exports.findInboxUsers = function(query,FbId,callback,errcallback){
-	console.log(typeof(FbId));
 	vidRefs.find({To: FbId}).toArray(function(err,refArray){
 		console.log("printing ref array");
 		console.dir(refArray);
 		for(var i = 0; i< refArray.length; i++)
 			refArray[i] = refArray[i].FbId;
 		var returnFunc = function(err,users){
-		if(err)
-			errcallback(err);
-		else{
-			console.log("printing inbox users");
-			console.dir(users);
-			callback(users);
-		}
+			if(err)
+				errcallback(err);
+			else
+				callback(users);
 		};
 		query.FbId= { $in : refArray};
 		people.find(query).toArray(returnFunc);
