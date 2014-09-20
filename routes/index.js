@@ -106,6 +106,7 @@ returnSignedPolicy = function(vidRef, res){
             ["content-length-range", 0, 4000]
         ]};
     var policyBase64 = new Buffer(JSON.stringify(policy), 'utf8').toString('base64');
+    console.log("print policy");
 	console.log("Policy Base64:"+ policyBase64);
  	var signature = crypto.createHmac('sha1', secret).update(policyBase64).digest('base64');
     res.json({bucket: bucket, awsKey: awsKey, policy: policyBase64, signature: signature});
