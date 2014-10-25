@@ -137,8 +137,6 @@ exports.findWhoILike = function(query,FbId,callback,errcallback){
 // return the users who sent messages to the specified fbid
 exports.findInboxUsers = function(query,FbId,callback,errcallback){
 	vidRefs.find({To: FbId}).toArray(function(err,refArray){
-		console.log("printing ref array");
-		console.dir(refArray);
 		for(var i = 0; i< refArray.length; i++)
 			refArray[i] = refArray[i].FbId;
 		var returnFunc = function(err,users){
