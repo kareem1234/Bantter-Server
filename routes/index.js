@@ -103,7 +103,7 @@ returnSignedPolicy = function(vidRef, res){
             {"key": fileName},
             {"acl": 'public-read'},
             ["starts-with", "$Content-Type", ""],
-            ["content-length-range", 0, 4000]
+            ["content-length-range", 0, 10000000]
         ]};
     var policyBase64 = new Buffer(JSON.stringify(policy), 'utf8').toString('base64');
     console.log("print policy");
