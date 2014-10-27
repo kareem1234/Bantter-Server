@@ -55,7 +55,8 @@ function getPresets(callback){
 
 
 function transcode(fileName,callback,errCallback){
-var newfileName = fileName +".mp4";
+var newfileName = fileName.replace(".3gp",".mp4");
+newfileName = newfileName.replace(".mov",".mp4");
 var pipeId = pipes[0];
 console.log(pipeId);
 console.log("setting up transcode params");
@@ -93,6 +94,8 @@ exports.initTranscode = function(callback){
   getPipes(func); 
 }
 exports.insertVidRef = function(req,res){
+  console.log("printing insertVidRef body");
+  consol.dir(req.body);
   var ref = req.body.VidRef;
   var user = req.body;
   delete user.VidRef;
