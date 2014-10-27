@@ -95,7 +95,7 @@ exports.initTranscode = function(callback){
 }
 exports.insertVidRef = function(req,res){
   console.log("printing insertVidRef body");
-  consol.dir(req.body);
+  console.dir(req.body);
   var ref = req.body.VidRef;
   var user = req.body;
   delete user.VidRef;
