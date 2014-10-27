@@ -73,7 +73,7 @@ var params = {
   Output:{
         Key: newfileName,
         PresetId: preset,
-        ThumbnailPattern: imageName+"{count}";
+        ThumbnailPattern: imageName+"{count}"
     }
   };
   console.dir(params);
