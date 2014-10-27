@@ -9,7 +9,6 @@ var pipes = new Array();
 var preset;
 
 function errCallback(res){
-  console.log("error found");
   var func = function(err){
     if(err)
       console.log(err);
@@ -54,9 +53,10 @@ function getPresets(callback){
 }
 
 
-function transcode(fileName,callback,errCallback){
+function transcode(fileName,imageName,callback,errCallback){
 var newfileName = fileName.replace(".3gp",".mp4");
 newfileName = newfileName.replace(".mov",".mp4");
+imageName = imageName+".png";
 var pipeId = pipes[0];
 console.log(pipeId);
 console.log("setting up transcode params");
@@ -72,7 +72,8 @@ var params = {
   PipelineId:pipeId,
   Output:{
         Key: newfileName,
-        PresetId: preset
+        PresetId: preset,
+        ThumbnailPattern: imageName
     }
   };
   console.dir(params);
@@ -110,6 +111,6 @@ exports.insertVidRef = function(req,res){
         db.updateUser(user,suc,errCallback(res));
      },errCallback(res));
   };
-  transcode(ref.Url,callback,errCallback(res));
+  transcode(ref.Url,ref.ImageUrl,callback,errCallback(res));
 }
 
