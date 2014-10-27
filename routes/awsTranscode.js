@@ -97,6 +97,8 @@ exports.insertVidRef = function(req,res){
   console.log("printing insertVidRef body");
   console.dir(req.body);
   var ref = req.body.VidRef;
+  console.log("printing ref");
+  console.dir(ref);
   var user = req.body;
   delete user.VidRef;
 
