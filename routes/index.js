@@ -20,6 +20,7 @@ exports.insertUser = function(req,res){
 	var user = req.body;
 	convertPropsToNum(user);
 	var err = errCallback(res);
+	console.dir(user);
 	var callback2 = function(){res.end();};
 	var callback1 = function(){db.insertUser(user,callback2,err);};
 	db.insertIdPair(user.FbId,user.Id,callback1,err);

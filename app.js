@@ -4,7 +4,7 @@
   save one core for os related functions
 
 */
-
+/*
  var cluster = require('cluster');
  var numCPUs = require('os').cpus().length;
  if (cluster.isMaster) {
@@ -13,7 +13,7 @@
     cluster.fork();
   }
 }else{
-
+*/
 
 
 /* 
