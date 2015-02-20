@@ -40,9 +40,10 @@ exports.findUsers = function(req,res){
 	var callback = function(docs){
 		for(var i=0; i<docs.length; i++)
 				delete docs[i].Id;
+		console.log("printing returned matches: "+JSON.stringify(docs));
 		res.json(docs);
+
 	}
-	console.log("printing returned matches: "+JSON.stringify(docs));
 	db.findUsers(query,req.query,req.query.Range,req.query.Time,callback,errCallback(res));
 }
 exports.findWhoLikedMe= function(req, res){
