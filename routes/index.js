@@ -42,7 +42,7 @@ exports.findUsers = function(req,res){
 				delete docs[i].Id;
 		res.json(docs);
 	}
-	console.log("printing returned matches: "+JSON..stringify)
+	console.log("printing returned matches: "+JSON.stringify)
 	db.findUsers(query,req.query,req.query.Range,req.query.Time,callback,errCallback(res));
 }
 exports.findWhoLikedMe= function(req, res){
