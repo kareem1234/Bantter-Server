@@ -18,9 +18,10 @@ function errCallback(res){
 }
 exports.insertUser = function(req,res){
 	var user = req.body;
+	console.log(JSON.stringify(user));
 	convertPropsToNum(user);
 	var err = errCallback(res);
-	console.dir(user);
+	console.log(JSON.stringify(user));
 	var callback2 = function(){res.end();};
 	var callback1 = function(){db.insertUser(user,callback2,err);};
 	db.insertIdPair(user.FbId,user.Id,callback1,err);
@@ -138,14 +139,14 @@ checkPermision = function(userId, fbId,res, callback){
 	db.getIdPair(userId,function(docs){
 		if(docs.length == 0){
 				var er = errCallback(res);
-				er("bad permission request");
+				er("bad permission request no documents found");
 			}
 		else if(docs[0].FbId === fbId  && docs[0].UserId === userId){
 				callback(true);
 			}
 		else {
 			var er = errCallback(res);
-			er("bad permission request");
+			er("bad permission request not matching documents found");
 		}
 	},errCallback(res));
 }
