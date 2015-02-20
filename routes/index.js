@@ -117,7 +117,6 @@ exports.getPolicy = function(req,res){
 	returnSignedPolicy(req.body.VidRef,res);
 }
 convertPropsToNum = function(user){
-	user.FbId = Number(user.FbId);
 	user.Lat = Number(user.Lat);
 	user.Lgt = Number(user.Lgt);
 	user.Age = Number(user.Age);
@@ -126,8 +125,6 @@ convertPropsToNum = function(user){
 		user.Range = Number(user.Range);
 	if(user.Time)
 		user.Time = Number(user.Time);
-	if(user.FromFbId)
-		user.FromFbId = Number(user.FromFbId);
 	if(user.Like){
 		for(var i =0;i<user.Like.length; i++){
 			user.Like[i].From = Number(user.Like[i].From);

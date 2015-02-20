@@ -56,7 +56,6 @@ function getPresets(callback){
 function transcode(fileName,imageName,callback,errCallback){
 var newfileName = fileName.replace(".3gp",".mp4");
 newfileName = newfileName.replace(".mov",".mp4");
-imageName = imageName+".png";
 var pipeId = pipes[0];
 console.log(pipeId);
 console.log("setting up transcode params");
