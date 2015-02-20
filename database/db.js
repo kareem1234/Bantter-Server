@@ -88,6 +88,7 @@ exports.findUsers = function(query,User,Range,Time,callback,errcallback){
 				var num2 = Math.abs(b.Lat-Number(User.Lat)) + Math.abs(b.Lgt-Number(User.Lgt));
 				return a-b;
 			});
+			console.log("found "+docs.length+" matches");
 			callback(docs);
 		}
 	});
