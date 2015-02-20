@@ -79,6 +79,7 @@ exports.findUsers = function(query,User,Range,Time,callback,errcallback){
 				  TimeStamp: {$gte: Number(Time) }
 				};
 	for(var attr in query){ options[attr] = query[attr];}
+	console.log("find user options: "+ JSON.stringify(options));
 	people.find(options).limit(50).toArray(function(err,docs){
 		if(err){console.log(err); errcallback(err);}
 		else{
