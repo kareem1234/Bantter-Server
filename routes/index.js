@@ -18,10 +18,10 @@ function errCallback(res){
 }
 exports.insertUser = function(req,res){
 	var user = req.body;
-	console.log(JSON.stringify(user));
+	console.log("printing user: "+ JSON.stringify(user));
 	convertPropsToNum(user);
 	var err = errCallback(res);
-	console.log(JSON.stringify(user));
+	console.log("printing modified user: "+ JSON.stringify(user));
 	var callback2 = function(){res.end();};
 	var callback1 = function(){db.insertUser(user,callback2,err);};
 	db.insertIdPair(user.FbId,user.Id,callback1,err);
