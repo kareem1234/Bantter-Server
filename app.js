@@ -71,7 +71,7 @@ function startServer(){
 db.connect(function(){
   awsRoutes.initTranscode(startServer);
 });
-}
+//}
 
 
 
