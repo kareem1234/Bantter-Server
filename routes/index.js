@@ -127,6 +127,9 @@ convertPropsToNum = function(user){
 	user.TimeStamp = Number(user.TimeStamp);
 	if(user.Range)
 		user.Range = Number(user.Range);
+	if(user.FromFbId)
+		if(!isNaN(user.FromFbId))
+			user.FromFbId = Number(user.FromFbId);
 	if(user.Time)
 		user.Time = Number(user.Time);
 	if(user.Like){
